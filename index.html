@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="1부터 25까지 순서대로 선택하는 숫자 순서 게임">
+  <title>Project-R | 숫자 순서 게임</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/game.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+
+<body>
+  <nav aria-label="화면 이동">
+    <button id="nav-home-button" type="button">게임</button>
+    <button id="presentation-button" type="button">발표용 랭킹</button>
+  </nav>
+  <main>
+    <section id="start-screen" class="screen" aria-labelledby="start-title">
+      <h1 id="start-title">숫자 순서 게임</h1>
+      <p class="center">1부터 25까지 순서대로 누르세요</p>
+      <form id="start-form" novalidate>
+        <label for="nickname">닉네임</label>
+        <input id="nickname" name="nickname" type="text" maxlength="10" placeholder="닉네임 입력" autocomplete="off"
+          spellcheck="false" aria-describedby="nickname-hint nickname-error" required>
+        <p id="nickname-hint" class="note">한글·영문·숫자 2~10자</p>
+        <p id="nickname-error" class="form-error" role="alert"></p>
+        <button class="wide-button" type="submit">게임 시작</button>
+      </form>
+      <p class="center">최고 기록에 도전하세요!</p>
+    </section>
+
+    <section id="game-screen" class="screen" aria-label="게임 화면" hidden>
+      <p class="center"><span id="player-name"></span> 님</p>
+      <p class="center">경과 시간: <strong id="timer">0.000</strong>초</p>
+      <p class="center">다음 숫자: <strong id="next-number">1</strong></p>
+      <div class="board-area">
+        <div id="countdown" class="countdown">
+          <p>준비하세요</p>
+          <strong id="countdown-number" role="status" aria-live="polite">3</strong>
+          <p>숫자판이 나타나면 시작합니다.</p>
+        </div>
+        <div id="board" class="board" aria-label="1부터 25까지 숫자판" hidden></div>
+      </div>
+      <p class="center">작은 숫자부터 차례대로 터치</p>
+      <p id="progress-text" class="note center">0 / 25 완료</p>
+      <p id="game-message" class="note center" role="status" aria-live="polite">잠시 후 시작합니다.</p>
+      <button id="exit-button" class="wide-button" type="button">처음으로</button>
+    </section>
+
+    <section id="result-screen" class="screen" aria-labelledby="result-title" hidden>
+      <h1 id="result-title" tabindex="-1">완료!</h1>
+      <p class="center"><span id="result-player"></span> 님</p>
+      <p class="center">이번 기록 <strong id="result-time">0.000</strong>초</p>
+      <p class="center">내 최고 기록 —</p>
+      <p class="rank-box">현재 순위 —</p>
+      <button id="retry-button" class="wide-button" type="button">다시 도전</button>
+      <button id="ranking-button" class="wide-button" type="button">랭킹 보기</button>
+      <button id="home-button" class="wide-button" type="button">처음으로</button>
+      <p class="note center">최고 기록과 순위는 서버 연결 후 표시됩니다.<br>현재 기록은 서버에 저장되지 않습니다.</p>
+    </section>
+
+    <section id="ranking-screen" class="screen" aria-labelledby="ranking-title" hidden>
+      <h1 id="ranking-title" tabindex="-1">랭킹</h1>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">순위</th>
+            <th scope="col">닉네임</th>
+            <th scope="col">기록</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="3">랭킹은 서버 연결 후 제공됩니다.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="rank-box">내 순위 — · 기록 —</p>
+      <button id="ranking-retry-button" class="wide-button" type="button">다시 도전</button>
+      <button id="ranking-home-button" class="wide-button" type="button">처음으로</button>
+    </section>
+
+    <section id="presentation-screen" class="screen presentation" aria-labelledby="presentation-title" hidden>
+      <h1 id="presentation-title" tabindex="-1">실시간 랭킹</h1>
+      <div class="presentation-layout">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">순위</th>
+              <th scope="col">닉네임</th>
+              <th scope="col">최고 기록</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan="3">랭킹은 서버 연결 후 제공됩니다.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="qr-section">
+          <div class="qr-placeholder">QR 코드 영역</div>
+          <p>스캔하고 게임에 참여</p>
+          <p class="note">배포 후 QR 코드 추가 예정</p>
+        </div>
+      </div>
+      <p class="note">기록 자동 갱신은 서버 연결 후 제공됩니다.</p>
+    </section>
+    <noscript>
+      <p>게임을 실행하려면 JavaScript를 활성화해주세요.</p>
+    </noscript>
+  </main>
+</body>
+
+</html>

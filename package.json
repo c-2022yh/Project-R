@@ -1,0 +1,10 @@
+{
+  "name": "project-r",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Project-R 숫자 순서 게임 프론트엔드",
+  "scripts": {
+    "start": "node tools/serve.cjs",
+    "test": "node tests/game.test.cjs"
+  }
+}
